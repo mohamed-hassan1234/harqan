@@ -16,7 +16,7 @@ Follow these steps to deploy the application on your VPS.
    adduser harqaan_user
    usermod -aG sudo harqaan_user
    ```
-
+nadiifo89@120!
 2. Login to the server:
 
    ```bash

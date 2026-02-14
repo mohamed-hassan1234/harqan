@@ -19,8 +19,6 @@ router.post(
 
 router.post(
   '/register',
-  auth,
-  authorizeRoles('Admin'),
   [
     body('fullName').notEmpty(),
     body('email').isEmail(),

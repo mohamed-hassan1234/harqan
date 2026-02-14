@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { loginRequest, meRequest } from '../services/auth';
+import { loginRequest, registerRequest, meRequest } from '../services/auth';
 
 const AuthContext = createContext(null);
 
@@ -35,13 +35,22 @@ export const AuthProvider = ({ children }) => {
     setUser(data.user);
   };
 
+  const register = async (userData) => {
+    const data = await registerRequest(userData);
+    // Optionally auto-login after registration
+    // setToken(data.token);
+    // localStorage.setItem('token', data.token);
+    // setUser(data.user);
+    return data;
+  };
+
   const logout = () => {
     setUser(null);
     setToken(null);
     localStorage.removeItem('token');
   };
 
-  const value = { user, token, login, logout, loading };
+  const value = { user, token, login, register, logout, loading };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
