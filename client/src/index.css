@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(27,31,36,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,31,36,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
