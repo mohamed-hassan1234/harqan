@@ -7,7 +7,7 @@ const AuthLayout = ({ children }) => {
         <h1 className="font-display text-2xl text-ink sm:text-3xl">Dukaanka Harqaan</h1>
         <p className="text-sm text-slate mt-2">Tailoring shop management system</p>
         <div className="mt-6">{children}</div>
-        <div className="mt-8 text-xs text-slate">Developed by Mohamed Hassan Mohamed.</div>
+        <div className="mt-8 text-xs text-slate">Developed by NidwaICT.</div>
       </div>
     </div>
   );

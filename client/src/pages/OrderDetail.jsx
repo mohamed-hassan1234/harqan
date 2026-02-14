@@ -86,7 +86,7 @@ const OrderDetail = () => {
             <tr><td>Method</td><td>${payment.method}</td></tr>
             <tr><td>Date</td><td>${new Date(payment.paidAt).toLocaleDateString()}</td></tr>
           </table>
-          <p style="margin-top: 40px;">Developed by Mohamed Hassan Mohamed.</p>
+          <p style="margin-top: 40px;">Developed by NidwaICT.</p>
         </body>
       </html>
     `;

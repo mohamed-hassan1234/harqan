@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }) => {
           />
           {children}
           <footer className="mt-10 text-center text-xs text-slate sm:text-left">
-            Developed by Mohamed Hassan Mohamed.
+            Developed by NidwaICT.
           </footer>
         </main>
       </div>

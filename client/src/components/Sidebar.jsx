@@ -41,7 +41,7 @@ const Sidebar = ({ user, mobileOpen, onClose }) => {
           <p className="text-sm text-sand/70">Tailoring Shop System</p>
         </div>
         {navLinks}
-        <div className="mt-10 text-xs text-sand/60">Developed by Mohamed Hassan Mohamed.</div>
+        <div className="mt-10 text-xs text-sand/60">Developed by NidwaICT.</div>
       </aside>
 
       <div
@@ -68,7 +68,7 @@ const Sidebar = ({ user, mobileOpen, onClose }) => {
           </button>
         </div>
         {navLinks}
-        <div className="mt-8 text-xs text-sand/60">Developed by Mohamed Hassan Mohamed.</div>
+        <div className="mt-8 text-xs text-sand/60">Developed by NidwaICT.</div>
       </aside>
     </>
   );
