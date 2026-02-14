@@ -54,7 +54,7 @@ const Dashboard = () => {
     <DashboardLayout>
       {loading && <Loading label="Loading dashboard..." />}
       {!loading && stats && (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:gap-6 xl:grid-cols-4">
           <StatCard label="Total Orders Today" value={stats.totalOrders} />
           <StatCard label="Pending" value={stats.pending} accent="text-ember" />
           <StatCard label="In Progress" value={stats.inProgress} accent="text-moss" />

@@ -121,33 +121,33 @@ const OrderDetail = () => {
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h3 className="font-display text-2xl">Order {order.orderNumber}</h3>
+          <h3 className="font-display text-xl sm:text-2xl">Order {order.orderNumber}</h3>
           <p className="text-sm text-slate">Customer: {order.customerId?.fullName}</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-2xl p-4 shadow-soft">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="rounded-2xl bg-white p-4 shadow-soft">
             <div className="text-xs text-slate uppercase tracking-[0.2em]">Status</div>
             <div className="mt-2 text-xl font-display">{order.status}</div>
           </div>
-          <div className="bg-white rounded-2xl p-4 shadow-soft">
+          <div className="rounded-2xl bg-white p-4 shadow-soft">
             <div className="text-xs text-slate uppercase tracking-[0.2em]">Total</div>
             <div className="mt-2 text-xl font-display">{order.finalTotal}</div>
           </div>
-          <div className="bg-white rounded-2xl p-4 shadow-soft">
+          <div className="rounded-2xl bg-white p-4 shadow-soft">
             <div className="text-xs text-slate uppercase tracking-[0.2em]">Remaining</div>
             <div className="mt-2 text-xl font-display">{remaining}</div>
           </div>
         </div>
 
         {['Admin', 'Manager', 'Tailor'].includes(user?.role) && (
-          <div className="bg-white rounded-2xl p-6 shadow-soft">
+          <div className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
             <h4 className="font-display text-xl">Update Status</h4>
-            <div className="mt-4 grid md:grid-cols-3 gap-4">
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="rounded-xl border border-ink/10 px-4 py-2"
+                className="w-full rounded-xl border border-ink/10 px-4 py-2"
               >
                 {STATUS_FLOW.map((s) => (
                   <option key={s} value={s}>{s}</option>
@@ -157,36 +157,36 @@ const OrderDetail = () => {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Progress note (optional)"
-                className="rounded-xl border border-ink/10 px-4 py-2"
+                className="w-full rounded-xl border border-ink/10 px-4 py-2"
               />
-              <button onClick={handleStatusUpdate} className="rounded-full bg-ink text-sand px-4 py-2">
+              <button onClick={handleStatusUpdate} className="w-full rounded-full bg-ink px-4 py-2 text-sand md:w-auto">
                 Save Status
               </button>
             </div>
           </div>
         )}
 
-        <div className="bg-white rounded-2xl p-6 shadow-soft">
+        <div className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
           <h4 className="font-display text-xl">Payments</h4>
           {canTakePayment && (
-            <form onSubmit={handlePayment} className="mt-4 grid md:grid-cols-3 gap-4">
+            <form onSubmit={handlePayment} className="mt-4 grid gap-4 md:grid-cols-3">
               <input
                 value={paymentForm.amountPaid}
                 onChange={(e) => setPaymentForm({ ...paymentForm, amountPaid: e.target.value })}
                 placeholder="Amount paid"
-                className="rounded-xl border border-ink/10 px-4 py-2"
+                className="w-full rounded-xl border border-ink/10 px-4 py-2"
                 required
               />
               <select
                 value={paymentForm.method}
                 onChange={(e) => setPaymentForm({ ...paymentForm, method: e.target.value })}
-                className="rounded-xl border border-ink/10 px-4 py-2"
+                className="w-full rounded-xl border border-ink/10 px-4 py-2"
               >
                 {PAYMENT_METHODS.map((method) => (
                   <option key={method} value={method}>{method}</option>
                 ))}
               </select>
-              <button className="rounded-full bg-ink text-sand px-4 py-2" type="submit">
+              <button className="w-full rounded-full bg-ink px-4 py-2 text-sand md:w-auto" type="submit">
                 Add Payment
               </button>
             </form>
@@ -197,9 +197,9 @@ const OrderDetail = () => {
               {payments.map((payment) => (
                 <tr key={payment._id} className="border-t border-ink/10">
                   <td className="px-4 py-3 font-medium">{payment.receiptNumber}</td>
-                  <td className="px-4 py-3">{payment.amountPaid}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{payment.amountPaid}</td>
                   <td className="px-4 py-3">{payment.method}</td>
-                  <td className="px-4 py-3">{new Date(payment.paidAt).toLocaleDateString()}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{new Date(payment.paidAt).toLocaleDateString()}</td>
                   <td className="px-4 py-3">
                     <button
                       onClick={() => printReceipt(payment)}
@@ -214,7 +214,7 @@ const OrderDetail = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-soft">
+        <div className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
           <h4 className="font-display text-xl">Progress Notes</h4>
           <ul className="mt-4 space-y-2 text-sm text-slate">
             {order.progressNotes?.length ? (
@@ -229,7 +229,7 @@ const OrderDetail = () => {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-soft">
+        <div className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
           <h4 className="font-display text-xl">Status Timeline</h4>
           <ul className="mt-4 space-y-2 text-sm text-slate">
             {order.statusHistory?.length ? (

@@ -51,11 +51,11 @@ const CustomerDetail = () => {
       ) : (
         <div className="space-y-6">
           <div>
-            <h3 className="font-display text-2xl">{customer?.fullName}</h3>
+            <h3 className="font-display text-xl sm:text-2xl">{customer?.fullName}</h3>
             <p className="text-sm text-slate">{customer?.phone}</p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             {tabs.map((item) => (
               <button
                 key={item}
@@ -89,8 +89,8 @@ const CustomerDetail = () => {
                 <tr key={order._id} className="border-t border-ink/10">
                   <td className="px-4 py-3 font-medium">{order.orderNumber}</td>
                   <td className="px-4 py-3">{order.status}</td>
-                  <td className="px-4 py-3">{new Date(order.deliveryDate).toLocaleDateString()}</td>
-                  <td className="px-4 py-3">{order.finalTotal}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{new Date(order.deliveryDate).toLocaleDateString()}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{order.finalTotal}</td>
                 </tr>
               ))}
             </Table>
@@ -101,9 +101,9 @@ const CustomerDetail = () => {
               {payments.map((payment) => (
                 <tr key={payment._id} className="border-t border-ink/10">
                   <td className="px-4 py-3 font-medium">{payment.receiptNumber}</td>
-                  <td className="px-4 py-3">{payment.amountPaid}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{payment.amountPaid}</td>
                   <td className="px-4 py-3">{payment.method}</td>
-                  <td className="px-4 py-3">{new Date(payment.paidAt).toLocaleDateString()}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{new Date(payment.paidAt).toLocaleDateString()}</td>
                 </tr>
               ))}
             </Table>

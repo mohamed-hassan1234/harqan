@@ -101,14 +101,14 @@ const Measurements = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-display text-2xl">Measurements</h3>
+          <h3 className="font-display text-xl sm:text-2xl">Measurements</h3>
           <p className="text-sm text-slate">Store measurement history per customer.</p>
         </div>
         <button
           onClick={openCreate}
-          className="rounded-full bg-ink text-sand px-4 py-2"
+          className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto"
           disabled={!selected}
         >
           Add Measurement
@@ -166,7 +166,7 @@ const Measurements = () => {
             onChange={(e) => setForm({ ...form, garmentType: e.target.value })}
             required
           />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <input className="rounded-xl border border-ink/10 px-4 py-2" placeholder="Shoulder" value={form.shoulder} onChange={(e) => setForm({ ...form, shoulder: e.target.value })} />
             <input className="rounded-xl border border-ink/10 px-4 py-2" placeholder="Sleeve" value={form.sleeve} onChange={(e) => setForm({ ...form, sleeve: e.target.value })} />
             <input className="rounded-xl border border-ink/10 px-4 py-2" placeholder="Length" value={form.length} onChange={(e) => setForm({ ...form, length: e.target.value })} />
@@ -179,7 +179,7 @@ const Measurements = () => {
             <input type="checkbox" checked={form.isDefault} onChange={(e) => setForm({ ...form, isDefault: e.target.checked })} />
             Set as default for this garment type
           </label>
-          <button className="rounded-full bg-ink text-sand px-4 py-2" type="submit">
+          <button className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto" type="submit">
             Save
           </button>
         </form>

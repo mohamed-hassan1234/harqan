@@ -108,21 +108,26 @@ const Orders = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-display text-2xl">Orders</h3>
+          <h3 className="font-display text-xl sm:text-2xl">Orders</h3>
           <p className="text-sm text-slate">Track orders, status, and assignments.</p>
         </div>
         {['Admin', 'Manager'].includes(user?.role) && (
-          <button onClick={() => setOpen(true)} className="rounded-full bg-ink text-sand px-4 py-2">New Order</button>
+          <button
+            onClick={() => setOpen(true)}
+            className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto"
+          >
+            New Order
+          </button>
         )}
       </div>
 
-      <div className="grid md:grid-cols-4 gap-3 mb-4">
+      <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <select
           value={filters.status}
           onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-          className="rounded-xl border border-ink/10 px-3 py-2"
+          className="w-full rounded-xl border border-ink/10 px-3 py-2"
         >
           <option value="">All Status</option>
           {STATUS_FLOW.map((status) => (
@@ -132,7 +137,7 @@ const Orders = () => {
         <select
           value={filters.paymentStatus}
           onChange={(e) => setFilters({ ...filters, paymentStatus: e.target.value })}
-          className="rounded-xl border border-ink/10 px-3 py-2"
+          className="w-full rounded-xl border border-ink/10 px-3 py-2"
         >
           <option value="">All Payment</option>
           <option value="Unpaid">Unpaid</option>
@@ -143,13 +148,13 @@ const Orders = () => {
           type="date"
           value={filters.dateFrom}
           onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
-          className="rounded-xl border border-ink/10 px-3 py-2"
+          className="w-full rounded-xl border border-ink/10 px-3 py-2"
         />
         <input
           type="date"
           value={filters.dateTo}
           onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
-          className="rounded-xl border border-ink/10 px-3 py-2"
+          className="w-full rounded-xl border border-ink/10 px-3 py-2"
         />
       </div>
 
@@ -166,9 +171,9 @@ const Orders = () => {
               </td>
               <td className="px-4 py-3">{order.customerId?.fullName}</td>
               <td className="px-4 py-3">{order.status}</td>
-              <td className="px-4 py-3">{new Date(order.deliveryDate).toLocaleDateString()}</td>
+              <td className="whitespace-nowrap px-4 py-3">{new Date(order.deliveryDate).toLocaleDateString()}</td>
               <td className="px-4 py-3">{order.assignedTo?.fullName || '-'}</td>
-              <td className="px-4 py-3">{order.finalTotal}</td>
+              <td className="whitespace-nowrap px-4 py-3">{order.finalTotal}</td>
             </tr>
           ))}
         </Table>
@@ -205,7 +210,7 @@ const Orders = () => {
             ))}
           </select>
           {!form.measurementId && (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid gap-3 sm:grid-cols-2">
               <input
                 className="rounded-xl border border-ink/10 px-4 py-2"
                 placeholder="Shoulder"
@@ -257,7 +262,7 @@ const Orders = () => {
             onChange={(e) => setForm({ ...form, deliveryDate: e.target.value })}
             required
           />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             <input
               className="rounded-xl border border-ink/10 px-4 py-2"
               placeholder="Price total"
@@ -284,7 +289,7 @@ const Orders = () => {
                 <option key={emp._id} value={emp._id}>{emp.fullName}</option>
               ))}
           </select>
-          <button className="rounded-full bg-ink text-sand px-4 py-2" type="submit">
+          <button className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto" type="submit">
             Create Order
           </button>
         </form>

@@ -64,12 +64,14 @@ const Employees = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-display text-2xl">Employees</h3>
+          <h3 className="font-display text-xl sm:text-2xl">Employees</h3>
           <p className="text-sm text-slate">Manage staff accounts and roles.</p>
         </div>
-        <button onClick={openCreate} className="rounded-full bg-ink text-sand px-4 py-2">Add Employee</button>
+        <button onClick={openCreate} className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto">
+          Add Employee
+        </button>
       </div>
 
       <Table headers={['Name', 'Email', 'Role', 'Active', 'Actions']}>
@@ -143,7 +145,7 @@ const Employees = () => {
               Active
             </label>
           )}
-          <button className="rounded-full bg-ink text-sand px-4 py-2" type="submit">
+          <button className="w-full rounded-full bg-ink px-4 py-2 text-sand sm:w-auto" type="submit">
             Save
           </button>
         </form>

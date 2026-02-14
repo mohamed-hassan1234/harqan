@@ -59,19 +59,21 @@ const Reports = () => {
   return (
     <DashboardLayout>
       <div className="space-y-8">
-        <section className="bg-white rounded-2xl p-6 shadow-soft">
-          <h3 className="font-display text-2xl">Daily Report</h3>
+        <section className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
+          <h3 className="font-display text-xl sm:text-2xl">Daily Report</h3>
           <div className="mt-4 flex flex-col md:flex-row gap-4">
             <input
               type="date"
               value={dailyDate}
               onChange={(e) => setDailyDate(e.target.value)}
-              className="rounded-xl border border-ink/10 px-4 py-2"
+              className="w-full rounded-xl border border-ink/10 px-4 py-2"
             />
-            <button onClick={loadDaily} className="rounded-full bg-ink text-sand px-4 py-2">Load</button>
+            <button onClick={loadDaily} className="w-full rounded-full bg-ink px-4 py-2 text-sand md:w-auto">
+              Load
+            </button>
           </div>
           {dailyData && (
-            <div className="mt-4 grid md:grid-cols-4 gap-4">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               <div>Total Orders: {dailyData.totalOrders}</div>
               <div>Total Final: {dailyData.totalFinal}</div>
               <div>Total Paid: {dailyData.totalPaid}</div>
@@ -80,27 +82,29 @@ const Reports = () => {
           )}
         </section>
 
-        <section className="bg-white rounded-2xl p-6 shadow-soft">
-          <h3 className="font-display text-2xl">Monthly Report</h3>
-          <div className="mt-4 grid md:grid-cols-3 gap-4">
+        <section className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
+          <h3 className="font-display text-xl sm:text-2xl">Monthly Report</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
             <input
               type="number"
               placeholder="Month (1-12)"
               value={month}
               onChange={(e) => setMonth(e.target.value)}
-              className="rounded-xl border border-ink/10 px-4 py-2"
+              className="w-full rounded-xl border border-ink/10 px-4 py-2"
             />
             <input
               type="number"
               placeholder="Year"
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="rounded-xl border border-ink/10 px-4 py-2"
+              className="w-full rounded-xl border border-ink/10 px-4 py-2"
             />
-            <button onClick={loadMonthly} className="rounded-full bg-ink text-sand px-4 py-2">Load</button>
+            <button onClick={loadMonthly} className="w-full rounded-full bg-ink px-4 py-2 text-sand md:w-auto">
+              Load
+            </button>
           </div>
           {monthlyData && (
-            <div className="mt-4 grid md:grid-cols-4 gap-4">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               <div>Total Orders: {monthlyData.totalOrders}</div>
               <div>Total Final: {monthlyData.totalFinal}</div>
               <div>Total Paid: {monthlyData.totalPaid}</div>
@@ -109,29 +113,33 @@ const Reports = () => {
           )}
         </section>
 
-        <section className="bg-white rounded-2xl p-6 shadow-soft">
-          <h3 className="font-display text-2xl">Employee Performance</h3>
-          <div className="mt-4 grid md:grid-cols-3 gap-4">
+        <section className="rounded-2xl bg-white p-4 shadow-soft sm:p-6">
+          <h3 className="font-display text-xl sm:text-2xl">Employee Performance</h3>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
             <input
               type="date"
               value={employeeRange.from}
               onChange={(e) => setEmployeeRange({ ...employeeRange, from: e.target.value })}
-              className="rounded-xl border border-ink/10 px-4 py-2"
+              className="w-full rounded-xl border border-ink/10 px-4 py-2"
             />
             <input
               type="date"
               value={employeeRange.to}
               onChange={(e) => setEmployeeRange({ ...employeeRange, to: e.target.value })}
-              className="rounded-xl border border-ink/10 px-4 py-2"
+              className="w-full rounded-xl border border-ink/10 px-4 py-2"
             />
-            <button onClick={loadEmployees} className="rounded-full bg-ink text-sand px-4 py-2">Load</button>
+            <button onClick={loadEmployees} className="w-full rounded-full bg-ink px-4 py-2 text-sand md:w-auto">
+              Load
+            </button>
           </div>
           {employeeData.length > 0 && (
             <div className="mt-4">
-              <button onClick={exportCSV} className="rounded-full border border-ink/10 px-4 py-2">Export CSV</button>
+              <button onClick={exportCSV} className="w-full rounded-full border border-ink/10 px-4 py-2 sm:w-auto">
+                Export CSV
+              </button>
               <div className="mt-4 space-y-2 text-sm">
                 {employeeData.map((row) => (
-                  <div key={row.userId} className="flex justify-between">
+                  <div key={row.userId} className="flex flex-col gap-1 sm:flex-row sm:justify-between">
                     <span>{row.fullName} ({row.role})</span>
                     <span>{row.completedOrders} orders, avg {row.averageCompletionMs} ms</span>
                   </div>
